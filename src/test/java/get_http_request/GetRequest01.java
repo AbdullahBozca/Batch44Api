@@ -16,7 +16,9 @@ public class GetRequest01 {
         System.out.println("Content Type : "+response.contentType());
         System.out.println("Test zamanı : "+response.time());
 
-        Assert.assertTrue(response.statusCode()==201);
+        Assert.assertTrue(response.statusCode()==200);
+
+
 
     }
 }
