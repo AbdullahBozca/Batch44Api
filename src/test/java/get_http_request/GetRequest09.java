@@ -30,8 +30,8 @@ public class GetRequest09 extends DummyBaseUrl {
         JsonPath json=response.jsonPath();
         System.out.println("12. : "+json.getString("data"));
         Assert.assertEquals("Quinn Flynn",json.getString("data.employee_name"));
-        Assert.assertTrue(json.getInt("employee_salary")==342000);
-        Assert.assertTrue(json.getInt("employee_age")==22);
+        Assert.assertTrue(json.getInt("data.employee_salary")==342000);
+        Assert.assertTrue(json.getInt("data.employee_age")==22);
 
     }
 }
