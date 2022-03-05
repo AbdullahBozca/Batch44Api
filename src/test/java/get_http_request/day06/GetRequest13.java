@@ -1,4 +1,4 @@
-package get_http_request;
+package get_http_request.day06;
 
 import base_url.GMIBankBaseUrl;
 import io.restassured.response.Response;

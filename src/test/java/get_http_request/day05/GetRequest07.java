@@ -1,4 +1,4 @@
-package get_http_request;
+package get_http_request.day05;
 
 import base_url.RegresinBaseUrl;
 import io.restassured.path.json.JsonPath;
