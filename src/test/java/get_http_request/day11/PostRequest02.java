@@ -1,7 +1,6 @@
 package get_http_request.day11;
 
 import base_url.DummyBaseUrl;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -15,24 +14,20 @@ import static io.restassured.RestAssured.given;
 
 public class PostRequest02 extends DummyBaseUrl {
 
-      /*
-   http://dummy.restapiexample.com/api/v1/create url ine, Request Body olarak
-   {
-       "name":"Ali Can",
+    /*
+    http://dummy.restapiexample.com/api/v1/create url ine, Request Body olarak
+    {"name":"Ali Can",
        "salary":"2000",
-       "age":"40",
-   }
-   gönderildiğinde,Status kodun 200 olduğunu ve dönen response body nin,
+       "age":"40",}
 
-   {
-       "status": "success",
+    gönderildiğinde, Status kodun 200 olduğunu ve dönen response body nin,
+
+    {"status": "success",
        "data": {
-       “id”:…
-   },
+       “id”: 201},
        "message": "Successfully! Record has been added."
-   }
-
-   olduğunu test edin
+    }
+    olduğunu test edin
     */
 
     @Test
@@ -57,7 +52,6 @@ public class PostRequest02 extends DummyBaseUrl {
                             .body(requestBodyMap)
                             .when()
                             .post("/{bir}/{iki}/{uc}");
-
         // POST isleminde, Map kullandığımızda toString'e gerek yok.
 
         response.prettyPrint();

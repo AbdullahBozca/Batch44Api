@@ -33,7 +33,7 @@ public class GetRequest19 extends DummyBaseUrl {
         //"/{1}/{2}/{3}" -> /api/v1/employees
         //http://dummy.restapiexample.com/api/v1/employees
 
-        //response.prettyPrint();
+        response.prettyPrint();
 
         //1) Status kodunun 200,
         Assert.assertEquals(200, response.statusCode());
@@ -44,15 +44,17 @@ public class GetRequest19 extends DummyBaseUrl {
         JsonPath json = response.jsonPath();
 
         List<Integer> idList = json.getList("data.findAll{it.id>10}.id");
+        // ID List: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+
         //List<Integer> idList = json.getList("data.id.findAll{it>10}"); bu şekilde de çalışır.
+
         System.out.println("ID List: " + idList);
         //Groovy Java platformu üzerinde çalışam bir bilgisayar dilidir.
         //Groovy ile loop kullanmadan response'dan gelen değerleri bir şarta göre alabiliriz.
 
-
         //3) 30’dan küçük tüm yaşları ekrana yazdırın ve bu yaşların içerisinde en büyük yaşın 23 olduğunu
         List<Integer> yasListesi = json.getList("data.findAll{it.employee_age<30}.employee_age");
-        System.out.println(yasListesi);
+        System.out.println("YASI 30'DAN KUCUK OLAN YASLAR: " + yasListesi);
 
         Collections.sort(yasListesi);
         Assert.assertEquals((Integer)23, yasListesi.get(yasListesi.size()-1));
@@ -62,7 +64,7 @@ public class GetRequest19 extends DummyBaseUrl {
         //4) Maası 350000 den büyük olan tüm employee name’leri ekrana yazdırın
         //ve bunların içerisinde “Charde Marshall” olduğunu test edin
 
-        List<Integer>salaryList=json.getList("data.findAll{it.employee_salary>350000}.employee_name");
+        List<Integer> salaryList = json.getList("data.findAll{it.employee_salary>350000}.employee_name");
         System.out.println(salaryList);
 
         Assert.assertTrue(salaryList.contains("Charde Marshall"));

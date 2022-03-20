@@ -4,13 +4,12 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Before;
 
-public class DummyBaseUrl {
+public class HerOkuAppBaseUrl {
 
-    protected RequestSpecification spec02;
+    protected RequestSpecification spec05;
 
     @Before
     public void setUp(){
-
-        spec02 = new RequestSpecBuilder().setBaseUri("http://dummy.restapiexample.com").build();
+        spec05= new RequestSpecBuilder().setBaseUri("https://restful-booker.herokuapp.com").build();
     }
 }

@@ -42,8 +42,6 @@ public class BookingDatesPojo {
         this.checkout = checkout;
     }
 
-
-
     //4) toString()
 
     @Override

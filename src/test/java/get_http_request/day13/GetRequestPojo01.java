@@ -1,6 +1,7 @@
 package get_http_request.day13;
 
 import base_url.DummyBaseUrl;
+import com.google.gson.Gson;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Assert;
@@ -55,5 +56,19 @@ GET Request to the URL http://dummy.restapiexample.com/api/v1/employee/1
         Assert.assertEquals(expextedData.getData().getEmployee_age(),actual.getData().getEmployee_age());
         Assert.assertEquals(expextedData.getData().getProfile_image(),actual.getData().getProfile_image());
         Assert.assertEquals(expextedData.getMessage(),actual.getMessage());
+
+
+        //Serialization -> Java yapısındaki datayı JSON formatına dönüştürme
+        Gson gson = new Gson();
+        String jsonFromJava = gson.toJson(actual);
+        System.err.println("jsonFromJava = " + jsonFromJava);
+        //jsonFromJava = {
+        // "status":"success",
+        // "data":{"id":1,
+        // "employee_name":"Tiger Nixon",
+        // "employee_salary":320800,
+        // "employee_age":61,
+        // "profile_image":""},
+        // "message":"Successfully! Record has been fetched."}
     }
 }

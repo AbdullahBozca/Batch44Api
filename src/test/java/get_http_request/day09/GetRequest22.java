@@ -18,11 +18,11 @@ public class GetRequest22 extends HerOkuAppBaseUrl {
           {
               "firstname": "Ali",
               "lastname": "Can",
-              "totalprice": 700,
+              "totalprice": 500,
               "depositpaid": true,
               "bookingdates": {
                                 "checkin": "2022-02-01",
-                                    "checkout": "2022-02-11"
+                                 "checkout": "2022-02-11"
              }
           }
    1) JsonPhat
@@ -76,7 +76,6 @@ public class GetRequest22 extends HerOkuAppBaseUrl {
                 ((Map)actualData.get("bookingdates")).get("checkin"));
         Assert.assertEquals(((Map<?, ?>) expectedTestDataMap.get("bookingdates")).get("checkout"),
                 ((Map<?, ?>) actualData.get("bookingdates")).get("checkout"));
-
 
         //2. YOL JSON PATH
         JsonPath json = response.jsonPath();

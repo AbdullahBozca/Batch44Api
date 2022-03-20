@@ -29,7 +29,6 @@ public class BookingPojo {
     private BookingDatesPojo bookingdates;
 
     //2) getter ve setter olustur
-
     public String getFirstname() {
         return firstname;
     }

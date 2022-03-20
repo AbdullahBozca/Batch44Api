@@ -52,10 +52,8 @@ public class GetRequest16 extends JsonPlaceHolderBaseUrl {
         //DATAYI JSON FORMATI -> JAVA'YA: De-Serialization
         //DATAYI JAVA'DAN -> JSON'A: Serialization
 
-        Map<String, Object> actualData = response.as(HashMap.class);    //De-Serialization YAPTIK
-
+        HashMap<String, Object> actualData = response.as(HashMap.class);    //De-Serialization YAPTIK
         /*
-
     De-Serialization aşağıdaki JSON formatındaki datayı map'e dönüştür.
     {
     "userId": 1,
@@ -75,7 +73,5 @@ public class GetRequest16 extends JsonPlaceHolderBaseUrl {
         Assert.assertEquals(expectedData.get("id"), actualData.get("id"));
         Assert.assertEquals(expectedData.get("title"), actualData.get("title"));
         Assert.assertEquals(expectedData.get("completed"), actualData.get("completed"));
-
-
     }
 }

@@ -1,5 +1,7 @@
 package test_data;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +34,16 @@ public class DummyTestData {
         yaslar.add(21);
         yaslar.add(19);
 
+
+        /*
+           {
+           "id": 10,
+           "employee_name": "Sonya Frost",
+           "employee_salary": 103600,
+           "employee_age": 23,
+           "profile_image": ""
+    }
+         */
         HashMap<String, Object> onuncu = new HashMap<>();
         onuncu.put("id", 10);
         onuncu.put("employee_name", "Sonya Frost");
@@ -48,7 +60,6 @@ public class DummyTestData {
     40,21 ve 19 yaslarında çalışanlar olup olmadığını
     10. Çalışan bilgilerinin bilgilerinin aşağıdaki gibi
          */
-
         HashMap<String, Object> expectedData = new HashMap<>();
         expectedData.put("statusCode", 200);
         expectedData.put("ondorduncucalisan", "Haley Kennedy");
@@ -58,6 +69,8 @@ public class DummyTestData {
         expectedData.put("onuncucalisan", onuncu);
         return expectedData;
     }
+
+
 
     /*
        {
@@ -92,6 +105,24 @@ public class DummyTestData {
         expectedData.put("statusCode", 200);
         expectedData.put("status", "success");
         expectedData.put("message", "Successfully! Record has been added.");
+        return expectedData;
+    }
+
+    /*
+    http://dummy.restapiexample.com/api/v1/delete/2 bir DELETE request gönderdiğimde
+
+    Dönen response un status kodunun 200 ve body kısmının aşağıdaki gibi olduğunu test edin
+    {
+    "status": "success",
+    "data": "2",
+    "message": "Successfully! Record has been deleted"
+    }
+   */
+    public JSONObject setUpDeleteExpectedData(){
+        JSONObject expectedData = new JSONObject();
+        expectedData.put("status", "success");
+        expectedData.put("data", "2");
+        expectedData.put("message", "Successfully! Record has been deleted");
         return expectedData;
     }
 }

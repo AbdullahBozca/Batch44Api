@@ -54,7 +54,7 @@ public class GetRequest23 extends DummyBaseUrl {
 
         //3) REQUEST VE RESPONSE OLUSTUR
         Response response = given().spec(spec02).contentType(ContentType.JSON).when().get("/{bir}/{iki}/{uc}");
-        //response.prettyPrint();
+        response.prettyPrint();
 
         //4) DOGRULAMA
         //De-Serialization
@@ -96,11 +96,25 @@ public class GetRequest23 extends DummyBaseUrl {
 
         Assert.assertTrue(actualYasListesi.containsAll((Collection<?>) expectedTestDataMap.get("arananyaslar")));
 
-        //2. Yol
-        List<Integer> employee_age = new ArrayList<>();
-        for(int i=0 ; i < ((List)actualDataMap.get("data")).size() ; i++){
-            employee_age.add((Integer) ((Map)((List)actualDataMap.get("data")).get(i)).get("employee_age"));
-            Assert.assertTrue(employee_age.containsAll((Collection<?>) expectedTestDataMap.get("arananYaslar")));
-        }
+        //10. CALISANIN BiLGiLERiNi
+        /*
+        {"id": 10,
+               "employee_name": "Sonya Frost",
+               "employee_salary": 103600,
+               "employee_age": 23,
+               "profile_image": ""}
+        */
+
+        Assert.assertEquals(((Map) expectedTestDataMap.get("onuncucalisan")).get("employee_name"),
+                ((Map)((List) actualDataMap.get("data")).get(9)).get("employee_name"));
+
+        Assert.assertEquals(((Map) expectedTestDataMap.get("onuncucalisan")).get("employee_salary"),
+                ((Map)((List) actualDataMap.get("data")).get(9)).get("employee_salary"));
+
+        Assert.assertEquals(((Map) expectedTestDataMap.get("onuncucalisan")).get("employee_age"),
+                ((Map)((List) actualDataMap.get("data")).get(9)).get("employee_age"));
+
+        Assert.assertEquals(((Map) expectedTestDataMap.get("onuncucalisan")).get("profile_image"),
+                ((Map)((List) actualDataMap.get("data")).get(9)).get("profile_image"));
     }
 }

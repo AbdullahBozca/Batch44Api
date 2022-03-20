@@ -1,9 +1,7 @@
 package get_http_request.day13;
 
 import base_url.HerOkuAppBaseUrl;
-import com.fasterxml.jackson.databind.ser.std.AsArraySerializerBase;
 import io.restassured.http.ContentType;
-import io.restassured.internal.common.assertion.AssertionSupport;
 import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,6 +12,22 @@ import pojos.BookingResponsePojo;
 import static io.restassured.RestAssured.given;
 
 public class PostRequestPojo02 extends HerOkuAppBaseUrl {
+
+        /*
+      {
+     "bookingid": 11,
+            "booking": {
+                    "firstname": "Ali",
+                    "lastname": "Can",
+                    "totalprice": 500,
+                    "depositpaid": true,
+                    "bookingdates": {
+                                    "checkin": "2022-03-01",
+                                    "checkout": "2022-03-11"
+                              }
+                          }
+                      }
+     */
 
     @Test
     public void test(){

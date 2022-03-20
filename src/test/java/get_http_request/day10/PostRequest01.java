@@ -1,16 +1,17 @@
 package get_http_request.day10;
 
 import base_url.HerOkuAppBaseUrl;
-import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
+import org.junit.Assert;
 import org.junit.Test;
 import test_data.HerOkuAppTestData;
 
 import static io.restassured.RestAssured.given;
 
 public class PostRequest01 extends HerOkuAppBaseUrl {
-         /*
+    /*
        https://restful-booker.herokuapp.com/booking
        { "firstname": "Ali",
                   "lastname": "Can",
@@ -46,10 +47,9 @@ public class PostRequest01 extends HerOkuAppBaseUrl {
         //2) EXPECTED DATA
         HerOkuAppTestData testData = new HerOkuAppTestData();
         JSONObject expectedRequestData = testData.setUpTestAndRequestData();
-        System.out.println(expectedRequestData);
+        System.out.println("TEST DATA iCiNDEKi BiLGi: " +expectedRequestData);
 
         //3) REQUEST VE RESPONSE
-
         Response response = given()
                             .contentType("application/json; charset=utf-8")
                             .auth()
@@ -58,8 +58,28 @@ public class PostRequest01 extends HerOkuAppBaseUrl {
                             .body(expectedRequestData.toString())
                             .when()
                             .post("/{parametre1}");
+        //JSONObject'te toString() kullanmalıyız. (.body(expectedRequestData.toString())
 
         response.prettyPrint();
+
+        //4) DOGRULAMA
+        //JSON PATH
+
+        JsonPath json = response.jsonPath();
+
+        response.then().assertThat().statusCode(200);
+
+        // (expectedRequestData.getString("firstname") -> TEST DATA iCERiNDEKi firstname
+        // json.getString("booking.firstname") -> body deki firstname
+        Assert.assertEquals(expectedRequestData.getString("firstname"), json.getString("booking.firstname"));
+        Assert.assertEquals(expectedRequestData.getString("lastname"), json.getString("booking.lastname"));
+        Assert.assertEquals(expectedRequestData.getInt("totalprice"), json.getInt("booking.totalprice"));
+        Assert.assertEquals(expectedRequestData.getBoolean("depositpaid"), json.getBoolean("booking.depositpaid"));
+
+        Assert.assertEquals(expectedRequestData.getJSONObject("bookingdates").getString("checkin"),
+                json.getString("booking.bookingdates.checkin"));
+        Assert.assertEquals(expectedRequestData.getJSONObject("bookingdates").getString("checkout"),
+                json.getString("booking.bookingdates.checkout"));
 
     }
 }

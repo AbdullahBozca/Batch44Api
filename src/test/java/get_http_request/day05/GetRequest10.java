@@ -25,7 +25,7 @@ public class GetRequest10 extends DummyBaseUrl {
     "Rhona Davidson" ın employee lerden biri olduğunu
     "21", "23", "61" yaşlarında employeeler olduğunu test edin
     JSONPATH KULLARAK
-*/
+    */
 
     @Test
     public void test10(){
@@ -49,7 +49,7 @@ public class GetRequest10 extends DummyBaseUrl {
         Assert.assertEquals(372000,json.getInt("data[5].employee_salary"));
 
         //Toplam 24 tane çalışan olduğunu,
-        Assert.assertEquals(24,json.getList("data.id").size());
+        Assert.assertEquals(24, json.getList("data.id").size());
 
         //"Rhona Davidson" ın employee lerden biri olduğunu
         Assert.assertTrue(json.getList("data.employee_name").contains("Rhona Davidson"));

@@ -46,7 +46,6 @@ public class GetRequest14 extends GMIBankBaseUrl {
                 , "country.name", equalTo("San Jose")
                 , "user.login", equalTo("delilah.metz"));
 
-
         //JSON PATH iLE
         JsonPath json = response.jsonPath();
         Assert.assertEquals("Melva", json.getString("firstName"));
@@ -55,6 +54,5 @@ public class GetRequest14 extends GMIBankBaseUrl {
         Assert.assertEquals("40207", json.getString("zipCode"));
         Assert.assertEquals("San Jose", json.getString("country.name"));
         Assert.assertEquals("delilah.metz", json.getString("user.login"));
-
     }
 }

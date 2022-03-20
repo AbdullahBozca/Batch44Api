@@ -3,7 +3,6 @@ package get_http_request.day06;
 import base_url.GMIBankBaseUrl;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,8 +16,8 @@ public class GetRequest15 extends GMIBankBaseUrl {
     "firstName": "Winona",
     "lastName": "Abernathy",
      "email": "winonaabernathy@gmail.com"
-
      */
+
     @Test
     public void test15() {
 

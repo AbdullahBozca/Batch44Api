@@ -15,22 +15,22 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class PostRequest03 extends JsonPlaceHolderBaseUrl {
-    /*
 
-   https://jsonplaceholder.typicode.com/todos URL ine aşağıdaki body gönderildiğinde,
+    /*
+    https://jsonplaceholder.typicode.com/todos URL ine aşağıdaki body gönderildiğinde,
     {
     "userId": 55,
     "title": "Tidy your room",
     "completed": false
-  }
+    }
     Dönen response un Status kodunun 201 ve response body nin aşağıdaki gibi olduğunu test edin
-  {
+    {
     "userId": 55,
     "title": "Tidy your room",
     "completed": false,
     "id": 201
-   }
-*/
+    }
+    */
     @Test
     public void test03(){
 
@@ -70,6 +70,7 @@ public class PostRequest03 extends JsonPlaceHolderBaseUrl {
 
         //3. De-Serialization
         HashMap<String, Object> actualDataMap = response.as(HashMap.class);
+        System.out.println("actualDataMap = " + actualDataMap);
 
         Assert.assertEquals(expectedRequest.getBoolean("completed"), actualDataMap.get("completed"));
         Assert.assertEquals(expectedRequest.getInt("id"), actualDataMap.get("id"));
